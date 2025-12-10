@@ -15,7 +15,9 @@
     "lint:fix": "eslint --fix",
     "prepare": "husky",
     "test": "vitest --config vitest/vitest.config.mts",
-    "test:coverage": "vitest --config vitest/vitest.config.mts --coverage"
+    "test:coverage": "vitest --config vitest/vitest.config.mts --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "next": "16.0.8",
@@ -27,6 +29,7 @@
     "@commitlint/config-conventional": "^20.2.0",
     "@commitlint/types": "^20.2.0",
     "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.57.0",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
