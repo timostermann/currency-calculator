@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="1" failures="0" errors="0" time="0.001335166">
-    <testsuite name="src/lib/temp.spec.ts" timestamp="2025-12-10T22:52:34.920Z" hostname="HID5029736" tests="1" failures="0" errors="0" skipped="0" time="0.001335166">
-        <testcase classname="src/lib/temp.spec.ts" name="temp &gt; should return temp" time="0.000651542">
+<testsuites name="vitest tests" tests="1" failures="0" errors="0" time="0.001297375">
+    <testsuite name="src/lib/temp.spec.ts" timestamp="2025-12-10T23:11:35.864Z" hostname="HID5029736" tests="1" failures="0" errors="0" skipped="0" time="0.001297375">
+        <testcase classname="src/lib/temp.spec.ts" name="temp &gt; should return temp" time="0.000634417">
         </testcase>
     </testsuite>
 </testsuites>

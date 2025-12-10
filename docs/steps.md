@@ -10,7 +10,7 @@ First quick step-by-step list for task planning.
   - [x] nvm
   - [x] lint-staged, commitlint, husky
   - [x] vitest, vitest-axe, html-validate, testing-library
-  - [ ] eslint, prettier
+  - [x] eslint, prettier
   - [ ] playwright
 - [ ] Setup changelog & release management
 - [ ] Setup tailwind config & global.css

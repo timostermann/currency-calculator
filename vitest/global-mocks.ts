@@ -15,7 +15,7 @@ vi.mock("next/headers", () => ({
   cookies: vi.fn(() => mockCookies),
 }));
 
-class MockSignJWT {
+export class MockSignJWT {
   private payload: unknown;
 
   constructor(payload: unknown) {

@@ -1,5 +1,3 @@
-// TODO: check again after eslint config is set up
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require("path");
 
 const prettierCommand = (filenames) =>
@@ -16,9 +14,7 @@ const testCommand = (filenames) =>
     .join(" ")}`;
 
 module.exports = {
-  "**/*.{js,cjs,mjs,jsx,mts,ts,tsx}": [buildEslintCommand],
-  // TODO: check again after deps are set up
-  // "**/*.{js,cjs,mjs,jsx,mts,ts,tsx}": [prettierCommand, buildEslintCommand],
-  // "**/*.{json,yml,css}": [prettierCommand],
-  // "**/*": [testCommand],
+  "**/*.{js,cjs,mjs,jsx,mts,ts,tsx}": [prettierCommand, buildEslintCommand],
+  "**/*.{json,yml,css}": [prettierCommand],
+  "**/*": [testCommand],
 };
