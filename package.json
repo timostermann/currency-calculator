@@ -1,6 +1,6 @@
 {
   "name": "currency-calculator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "engines": {
     "node": ">= 22 < 25",
@@ -17,7 +17,9 @@
     "test": "vitest --config vitest/vitest.config.mts",
     "test:coverage": "vitest --config vitest/vitest.config.mts --coverage",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "release": "commit-and-tag-version",
+    "release:test": "npm run release -- --skip.commit --skip.tag"
   },
   "dependencies": {
     "next": "16.0.8",
@@ -38,6 +40,7 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^5.1.2",
     "@vitest/eslint-plugin": "^1.5.2",
+    "commit-and-tag-version": "^12.6.1",
     "eslint": "^9.39.1",
     "eslint-config-next": "16.0.8",
     "eslint-import-resolver-typescript": "^4.4.4",
