@@ -12,7 +12,9 @@
     "start": "next start",
     "commitlint": "commitlint --edit",
     "lint": "eslint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "vitest --config vitest/vitest.config.mts",
+    "test:coverage": "vitest --config vitest/vitest.config.mts --coverage"
   },
   "dependencies": {
     "next": "16.0.8",
@@ -24,14 +26,21 @@
     "@commitlint/config-conventional": "^20.2.0",
     "@commitlint/types": "^20.2.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5.1.2",
     "eslint": "^9",
     "eslint-config-next": "16.0.8",
+    "html-validate": "^10.4.0",
     "husky": "^9.1.7",
+    "jsdom": "^27.3.0",
     "lint-staged": "^16.2.7",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.0.15",
+    "vitest-axe": "^0.1.0"
   }
 }
