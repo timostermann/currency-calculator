@@ -11,10 +11,10 @@ First quick step-by-step list for task planning.
   - [x] lint-staged, commitlint, husky
   - [x] vitest, vitest-axe, html-validate, testing-library
   - [x] eslint, prettier
-  - [ ] playwright
-- [ ] Setup changelog & release management
+  - [x] playwright
+- [x] next config (e.g. for CSP)
 - [ ] Setup tailwind config & global.css
-- [ ] next config (e.g. for CSP)
+- [ ] Setup changelog & release management
 
 ## 2 Connect API
 
