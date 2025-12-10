@@ -6,15 +6,15 @@ First quick step-by-step list for task planning.
 
 - [x] Setup repo
 - [x] Setup app using Next.js starter
-- [ ] Setup helpers:
+- [x] Setup helpers:
   - [x] nvm
   - [x] lint-staged, commitlint, husky
   - [x] vitest, vitest-axe, html-validate, testing-library
   - [x] eslint, prettier
   - [x] playwright
 - [x] next config (e.g. for CSP)
-- [ ] Setup tailwind config & global.css
-- [ ] Setup changelog & release management
+- [x] Setup tailwind config & global.css
+- [x] Setup changelog & release management
 
 ## 2 Connect API
 
