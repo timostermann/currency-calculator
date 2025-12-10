@@ -41,6 +41,7 @@ First quick step-by-step list for task planning.
 
 ## 6 Checks
 
+- [ ] Check unresolved TODO comments
 - [ ] Check A11y
 - [ ] Check Loading/Error Handling
 - [ ] Server Boundary as required
