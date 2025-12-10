@@ -4,10 +4,10 @@ First quick step-by-step list for task planning.
 
 ## 1 Setup
 
-- [ ] Setup repo
-- [ ] Setup app using Next.js starter
+- [x] Setup repo
+- [x] Setup app using Next.js starter
 - [ ] Setup helpers:
-  - [ ] nvm
+  - [x] nvm
   - [ ] lint-staged, commitlint, husky
   - [ ] vitest, vitest-axe, html-validate, testing-library
   - [ ] eslint, prettier

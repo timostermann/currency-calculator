@@ -2,6 +2,10 @@
   "name": "currency-calculator",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">= 22 < 25",
+    "npm": ">= 11"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,7 +19,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
