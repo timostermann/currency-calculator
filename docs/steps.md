@@ -8,8 +8,8 @@ First quick step-by-step list for task planning.
 - [x] Setup app using Next.js starter
 - [ ] Setup helpers:
   - [x] nvm
-  - [ ] lint-staged, commitlint, husky
-  - [ ] vitest, vitest-axe, html-validate, testing-library
+  - [x] lint-staged, commitlint, husky
+  - [x] vitest, vitest-axe, html-validate, testing-library
   - [ ] eslint, prettier
   - [ ] playwright
 - [ ] Setup changelog & release management
