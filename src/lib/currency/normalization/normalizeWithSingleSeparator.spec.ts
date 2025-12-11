@@ -1,4 +1,3 @@
-import { describe, it, expect } from "vitest";
 import { normalizeWithSingleSeparator } from "./normalizeWithSingleSeparator";
 
 describe("normalizeWithSingleSeparator", () => {

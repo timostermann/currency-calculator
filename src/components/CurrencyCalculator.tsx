@@ -6,6 +6,7 @@ import {
   parseLocaleNumber,
   validateAmount,
   formatCurrency,
+  formatNumber,
 } from "@/lib/currency";
 import { Input } from "./Input";
 import { PresetButton } from "./PresetButton";
@@ -15,11 +16,12 @@ type CurrencyCalculatorProps = {
     EUR?: number;
     CHF?: number;
   };
+  locale: string;
 };
 
 const PRESET_VALUES = [100, 1000, 10000];
 
-export function CurrencyCalculator({ rates }: CurrencyCalculatorProps) {
+export function CurrencyCalculator({ rates, locale }: CurrencyCalculatorProps) {
   const [amount, setAmount] = useState("");
   const [activePreset, setActivePreset] = useState<number | null>(null);
 
@@ -37,8 +39,8 @@ export function CurrencyCalculator({ rates }: CurrencyCalculatorProps) {
   };
 
   const numericAmount = parseLocaleNumber(amount) ?? 0;
-  const eurAmount = rates.EUR ? numericAmount * rates.EUR : 0;
-  const chfAmount = rates.CHF ? numericAmount * rates.CHF : 0;
+  const eurAmount = (rates.EUR ?? 0) * numericAmount;
+  const chfAmount = (rates.CHF ?? 0) * numericAmount;
   const hasValidAmount = !error && numericAmount > 0;
 
   return (
@@ -57,7 +59,6 @@ export function CurrencyCalculator({ rates }: CurrencyCalculatorProps) {
           id="amount-input"
           label="Amount in USD"
           prefix="$"
-          placeholder="0.00"
           value={amount}
           onChange={handleAmountChange}
           error={error}
@@ -75,7 +76,7 @@ export function CurrencyCalculator({ rates }: CurrencyCalculatorProps) {
                   activePreset === presetValue ? ", currently active" : ""
                 }`}
               >
-                ${presetValue.toLocaleString("de-DE")}
+                <span>{formatCurrency(presetValue, "USD", locale, 0)}</span>
               </PresetButton>
             ))}
           </div>
@@ -101,15 +102,15 @@ export function CurrencyCalculator({ rates }: CurrencyCalculatorProps) {
                       aria-atomic="true"
                     >
                       {hasValidAmount
-                        ? formatCurrency(eurAmount, "EUR")
-                        : "€0,00"}
+                        ? formatCurrency(eurAmount, "EUR", locale)
+                        : formatCurrency(0, "EUR", locale)}
                     </output>
                   </div>
                 </div>
                 <div className="text-right">
                   <p className="text-xs text-gray-500">Rate</p>
                   <p className="text-sm text-gray-400">
-                    {rates.EUR.toFixed(4)}
+                    {formatNumber(rates.EUR, 4, locale)}
                   </p>
                 </div>
               </div>
@@ -130,15 +131,15 @@ export function CurrencyCalculator({ rates }: CurrencyCalculatorProps) {
                       aria-atomic="true"
                     >
                       {hasValidAmount
-                        ? formatCurrency(chfAmount, "CHF")
-                        : "CHF 0,00"}
+                        ? formatCurrency(chfAmount, "CHF", locale)
+                        : formatCurrency(0, "CHF", locale)}
                     </output>
                   </div>
                 </div>
                 <div className="text-right">
                   <p className="text-xs text-gray-500">Rate</p>
                   <p className="text-sm text-gray-400">
-                    {rates.CHF.toFixed(4)}
+                    {formatNumber(rates.CHF, 4, locale)}
                   </p>
                 </div>
               </div>

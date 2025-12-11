@@ -1,4 +1,3 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
 import type { LatestRatesResponse } from "@/lib/api/types";
 import { getLatestRates } from "./getLatestRates";
 

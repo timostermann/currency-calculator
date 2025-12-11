@@ -1,4 +1,3 @@
-import { describe, it, expect } from "vitest";
 import { hasValidThousandSeparators } from "./hasValidThousandSeparators";
 
 describe("hasValidThousandSeparators", () => {

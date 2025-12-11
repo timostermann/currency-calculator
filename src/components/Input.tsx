@@ -34,7 +34,7 @@ export function Input({
           {label}
         </label>
       )}
-      <div className="relative min-h-[3.5rem]">
+      <div className="relative min-h-14">
         <div className="relative">
           {prefix && (
             <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">

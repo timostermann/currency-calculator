@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import {
   LineChart,
   Line,
@@ -11,6 +12,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { parseTimeSeriesData } from "@/lib/api/utils/parseTimeSeriesData";
+import { getBrowserLocale } from "@/lib/locale";
+import { formatNumber } from "@/lib/currency";
 import type { TimeSeriesRatesResponse } from "@/lib/api/types";
 
 type ExchangeRateChartProps = {
@@ -18,14 +21,23 @@ type ExchangeRateChartProps = {
 };
 
 export function ExchangeRateChart({ data }: ExchangeRateChartProps) {
-  const chartData = parseTimeSeriesData(data).map((point) => ({
-    date: new Date(point.date).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-    }),
-    EUR: point.rates.EUR,
-    CHF: point.rates.CHF,
-  }));
+  const locale = getBrowserLocale();
+
+  const chartData = useMemo(
+    () =>
+      parseTimeSeriesData(data).map((point) => ({
+        date: new Date(point.date).toLocaleDateString(locale, {
+          month: "short",
+          day: "numeric",
+        }),
+        EUR: point.rates.EUR,
+        CHF: point.rates.CHF,
+      })),
+    [data, locale],
+  );
+
+  const formatYAxis = (value: number) => formatNumber(value, 2, locale);
+  const formatTooltip = (value: number) => formatNumber(value, 4, locale);
 
   return (
     <div className="h-[400px] w-full">
@@ -44,6 +56,7 @@ export function ExchangeRateChart({ data }: ExchangeRateChartProps) {
           <YAxis
             tick={{ fill: "var(--color-gray-200)" }}
             domain={["auto", "auto"]}
+            tickFormatter={formatYAxis}
           />
           <Tooltip
             contentStyle={{
@@ -53,6 +66,7 @@ export function ExchangeRateChart({ data }: ExchangeRateChartProps) {
               boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
             }}
             labelStyle={{ color: "#374151", fontWeight: 600 }}
+            formatter={formatTooltip}
           />
           <Legend
             wrapperStyle={{ paddingTop: "1rem" }}

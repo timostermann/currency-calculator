@@ -1,4 +1,3 @@
-import { describe, it, expect } from "vitest";
 import { parseLocaleNumber } from "./parseLocaleNumber";
 
 describe("parseLocaleNumber", () => {

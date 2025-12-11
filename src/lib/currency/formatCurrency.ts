@@ -1,19 +1,18 @@
-/**
- * Format a number as currency using Intl.NumberFormat
- * @param value - The number to format
- * @param currency - The currency code (e.g., "EUR", "USD", "CHF")
- * @param locale - The locale to use for formatting (defaults to "de-DE")
- * @returns The formatted currency string
- */
+import { getBrowserLocale } from "@/lib/locale";
+
 export function formatCurrency(
   value: number,
   currency: string,
-  locale = "de-DE",
+  locale?: string,
+  decimals?: number,
 ): string {
-  return new Intl.NumberFormat(locale, {
+  const effectiveLocale = locale || getBrowserLocale();
+  const effectiveDecimals = decimals ?? 2;
+
+  return new Intl.NumberFormat(effectiveLocale, {
     style: "currency",
     currency,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: effectiveDecimals,
+    maximumFractionDigits: effectiveDecimals,
   }).format(value);
 }

@@ -1,4 +1,3 @@
-import { describe, it, expect } from "vitest";
 import type { TimeSeriesRatesResponse } from "@/lib/api/types";
 import { parseTimeSeriesData } from "./parseTimeSeriesData";
 

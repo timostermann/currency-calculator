@@ -1,11 +1,14 @@
 import { getLatestRates, getLast14DaysRates } from "@/lib/api";
 import { ExchangeRateChart } from "@/components/ExchangeRateChart";
 import { CurrencyCalculator } from "@/components/CurrencyCalculator";
+import { getServerLocale } from "@/lib/locale/getServerLocale";
+import { formatNumber } from "@/lib/currency";
 
 export default async function Home() {
-  const [ratesData, timeSeriesData] = await Promise.all([
+  const [ratesData, timeSeriesData, locale] = await Promise.all([
     getLatestRates("USD", ["EUR", "CHF"]),
     getLast14DaysRates("USD", ["EUR", "CHF"]),
+    getServerLocale(),
   ]);
 
   return (
@@ -36,7 +39,9 @@ export default async function Home() {
                     USD to EUR
                   </p>
                   <p className="mt-2 text-3xl font-bold text-white">
-                    {ratesData.rates.EUR?.toFixed(4) ?? "N/A"}
+                    {ratesData.rates.EUR
+                      ? formatNumber(ratesData.rates.EUR, 4, locale)
+                      : "N/A"}
                   </p>
                 </div>
                 <div className="text-4xl">🇪🇺</div>
@@ -50,7 +55,9 @@ export default async function Home() {
                     USD to CHF
                   </p>
                   <p className="mt-2 text-3xl font-bold text-white">
-                    {ratesData.rates.CHF?.toFixed(4) ?? "N/A"}
+                    {ratesData.rates.CHF
+                      ? formatNumber(ratesData.rates.CHF, 4, locale)
+                      : "N/A"}
                   </p>
                 </div>
                 <div className="text-4xl">🇨🇭</div>
@@ -59,7 +66,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <CurrencyCalculator rates={ratesData.rates} />
+        <CurrencyCalculator rates={ratesData.rates} locale={locale} />
 
         <div className="rounded-lg bg-gray-800 p-8 shadow-lg">
           <div className="mb-6 border-b pb-4">

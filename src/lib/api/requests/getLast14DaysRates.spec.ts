@@ -1,4 +1,3 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
 import type { TimeSeriesRatesResponse } from "@/lib/api/types";
 import { getLast14DaysRates } from "./getLast14DaysRates";
 
