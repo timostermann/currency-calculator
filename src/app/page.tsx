@@ -13,77 +13,64 @@ export default async function Home() {
   ]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-linear-to-br from-gray-950 to-gray-800 p-4">
-      <main className="w-full max-w-4xl space-y-8">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-white">Currency Calculator</h1>
-          <p className="mt-2 text-lg text-gray-300">
-            USD to EUR & CHF Exchange Rates
+    <>
+      <div className="rounded-lg bg-gray-800 p-8 shadow-lg">
+        <div className="mb-6 border-b pb-4">
+          <h2 className="text-xl font-semibold text-gray-100">
+            Current Exchange Rates
+          </h2>
+          <p className="mt-1 text-sm text-gray-400">
+            Last updated: {formatDate(ratesData.date, locale)}
           </p>
         </div>
 
-        <div className="rounded-lg bg-gray-800 p-8 shadow-lg">
-          <div className="mb-6 border-b pb-4">
-            <h2 className="text-xl font-semibold text-gray-100">
-              Current Exchange Rates
-            </h2>
-            <p className="mt-1 text-sm text-gray-400">
-              Last updated: {formatDate(ratesData.date, locale)}
-            </p>
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-lg border border-gray-700 bg-gray-700 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-300">USD to EUR</p>
+                <p className="mt-2 text-3xl font-bold text-white">
+                  {ratesData.rates.EUR
+                    ? formatNumber(ratesData.rates.EUR, 4, locale)
+                    : "N/A"}
+                </p>
+              </div>
+              <div className="text-4xl">🇪🇺</div>
+            </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
-            <div className="rounded-lg border border-gray-700 bg-gray-700 p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-300">
-                    USD to EUR
-                  </p>
-                  <p className="mt-2 text-3xl font-bold text-white">
-                    {ratesData.rates.EUR
-                      ? formatNumber(ratesData.rates.EUR, 4, locale)
-                      : "N/A"}
-                  </p>
-                </div>
-                <div className="text-4xl">🇪🇺</div>
+          <div className="rounded-lg border border-gray-700 bg-gray-700 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-300">USD to CHF</p>
+                <p className="mt-2 text-3xl font-bold text-white">
+                  {ratesData.rates.CHF
+                    ? formatNumber(ratesData.rates.CHF, 4, locale)
+                    : "N/A"}
+                </p>
               </div>
-            </div>
-
-            <div className="rounded-lg border border-gray-700 bg-gray-700 p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-300">
-                    USD to CHF
-                  </p>
-                  <p className="mt-2 text-3xl font-bold text-white">
-                    {ratesData.rates.CHF
-                      ? formatNumber(ratesData.rates.CHF, 4, locale)
-                      : "N/A"}
-                  </p>
-                </div>
-                <div className="text-4xl">🇨🇭</div>
-              </div>
+              <div className="text-4xl">🇨🇭</div>
             </div>
           </div>
         </div>
+      </div>
 
-        <CurrencyCalculator rates={ratesData.rates} locale={locale} />
+      <CurrencyCalculator rates={ratesData.rates} locale={locale} />
 
-        <div className="rounded-lg bg-gray-800 p-8 shadow-lg">
-          <div className="mb-6 border-b pb-4">
-            <h2 className="text-xl font-semibold text-gray-100">
-              14-Day Exchange Rate Trend
-            </h2>
-            <p className="mt-1 text-sm text-gray-400">
-              Historical rates from{" "}
-              {formatDate(timeSeriesData.start_date, locale)} to{" "}
-              {formatDate(timeSeriesData.end_date, locale)}
-            </p>
-          </div>
-
-          <ExchangeRateChart data={timeSeriesData} />
+      <div className="rounded-lg bg-gray-800 p-8 shadow-lg">
+        <div className="mb-6 border-b pb-4">
+          <h2 className="text-xl font-semibold text-gray-100">
+            14-Day Exchange Rate Trend
+          </h2>
+          <p className="mt-1 text-sm text-gray-400">
+            Historical rates from{" "}
+            {formatDate(timeSeriesData.start_date, locale)} to{" "}
+            {formatDate(timeSeriesData.end_date, locale)}
+          </p>
         </div>
-      </main>
-    </div>
+
+        <ExchangeRateChart data={timeSeriesData} />
+      </div>
+    </>
   );
 }

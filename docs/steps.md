@@ -39,14 +39,14 @@ First quick step-by-step list for task planning.
 - [x] Add output
 - [x] Add calculation (probably as server action)
 - [x] Add locale formatting (without hydration errors)
-- [ ] Tests
+- [x] Tests
 
 ## 6 Checks
 
 - [x] Check unresolved TODO comments
 - [ ] Check A11y
-- [ ] Check Loading/Error Handling
-- [ ] Server Boundary as required
+- [x] Check Loading/Error Handling
+- [x] Server Boundary as required
 
 ## 7 Deployment
 

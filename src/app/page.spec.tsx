@@ -86,15 +86,6 @@ describe("Home Page", () => {
     expect(screen.getByText("14-Day Exchange Rate Trend")).toBeInTheDocument();
   });
 
-  it("displays page title and subtitle", async () => {
-    render(await Home());
-
-    expect(screen.getByText("Currency Calculator")).toBeInTheDocument();
-    expect(
-      screen.getByText("USD to EUR & CHF Exchange Rates"),
-    ).toBeInTheDocument();
-  });
-
   it("renders CurrencyCalculator component", async () => {
     render(await Home());
 
