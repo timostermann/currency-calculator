@@ -30,7 +30,7 @@ First quick step-by-step list for task planning.
 
 ## 4 Chart
 
-- [ ] Use recharts or similar
+- [x] Use recharts or similar
 
 ## 5 Form
 
