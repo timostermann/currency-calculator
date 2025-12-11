@@ -3,7 +3,7 @@ import cn from "classnames";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 type InputProps = ComponentPropsWithoutRef<"input"> & {
-  label?: string;
+  label: string;
   prefix?: ReactNode;
   suffix?: ReactNode;
   error?: string;

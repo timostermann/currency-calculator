@@ -1,0 +1,201 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CurrencyCalculator > renders expected markup 1`] = `
+<div>
+  <div
+    class="rounded-lg bg-gray-800 p-8 shadow-lg"
+  >
+    <div
+      class="mb-6 border-b pb-4"
+    >
+      <h2
+        class="text-xl font-semibold text-gray-100"
+      >
+        Currency Converter
+      </h2>
+      <p
+        class="mt-1 text-sm text-gray-400"
+      >
+        Enter an amount in USD to convert
+      </p>
+    </div>
+    <div
+      class="space-y-6"
+    >
+      <div>
+        <label
+          class="mb-2 block text-sm font-medium text-gray-300"
+          for="amount-input"
+        >
+          Amount in USD
+        </label>
+        <div
+          class="relative min-h-14"
+        >
+          <div
+            class="relative"
+          >
+            <span
+              class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400"
+            >
+              $
+            </span>
+            <input
+              aria-invalid="false"
+              class="w-full rounded-lg border bg-gray-700 py-3 text-lg text-white placeholder-gray-500 focus:ring-2 focus:outline-none border-gray-600 focus:border-blue-500 focus:ring-blue-500 pl-8"
+              id="amount-input"
+              inputmode="decimal"
+              type="text"
+              value=""
+            />
+          </div>
+          <p
+            class="absolute top-full left-0 mt-1 text-sm text-red-400 transition-opacity pointer-events-none opacity-0"
+            id="amount-input-error"
+          >
+             
+          </p>
+        </div>
+      </div>
+      <div>
+        <p
+          class="mb-2 text-sm font-medium text-gray-300"
+        >
+          Quick values
+        </p>
+        <div
+          class="flex gap-2"
+        >
+          <button
+            aria-label="Set amount to 100 USD"
+            aria-pressed="false"
+            class="flex-1 rounded-lg border px-4 py-2 text-white transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none border-gray-600 bg-gray-700 hover:bg-gray-600"
+            type="button"
+          >
+            <span>
+              $100
+            </span>
+          </button>
+          <button
+            aria-label="Set amount to 1000 USD"
+            aria-pressed="false"
+            class="flex-1 rounded-lg border px-4 py-2 text-white transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none border-gray-600 bg-gray-700 hover:bg-gray-600"
+            type="button"
+          >
+            <span>
+              $1,000
+            </span>
+          </button>
+          <button
+            aria-label="Set amount to 10000 USD"
+            aria-pressed="false"
+            class="flex-1 rounded-lg border px-4 py-2 text-white transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none border-gray-600 bg-gray-700 hover:bg-gray-600"
+            type="button"
+          >
+            <span>
+              $10,000
+            </span>
+          </button>
+        </div>
+      </div>
+      <div>
+        <p
+          class="mb-3 text-sm font-medium text-gray-300"
+        >
+          Converted amounts
+        </p>
+        <div
+          class="space-y-3"
+        >
+          <div
+            class="flex items-center justify-between rounded-lg border border-gray-700 bg-gray-700 p-4"
+          >
+            <div
+              class="flex items-center gap-3"
+            >
+              <span
+                aria-hidden="true"
+                class="text-2xl"
+              >
+                🇪🇺
+              </span>
+              <div>
+                <p
+                  class="text-sm text-gray-400"
+                >
+                  EUR
+                </p>
+                <output
+                  aria-atomic="true"
+                  aria-live="polite"
+                  class="text-xl font-semibold text-white"
+                  for="amount-input"
+                >
+                  €0.00
+                </output>
+              </div>
+            </div>
+            <div
+              class="text-right"
+            >
+              <p
+                class="text-xs text-gray-500"
+              >
+                Rate
+              </p>
+              <p
+                class="text-sm text-gray-400"
+              >
+                0.9200
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex items-center justify-between rounded-lg border border-gray-700 bg-gray-700 p-4"
+          >
+            <div
+              class="flex items-center gap-3"
+            >
+              <span
+                aria-hidden="true"
+                class="text-2xl"
+              >
+                🇨🇭
+              </span>
+              <div>
+                <p
+                  class="text-sm text-gray-400"
+                >
+                  CHF
+                </p>
+                <output
+                  aria-atomic="true"
+                  aria-live="polite"
+                  class="text-xl font-semibold text-white"
+                  for="amount-input"
+                >
+                  CHF 0.00
+                </output>
+              </div>
+            </div>
+            <div
+              class="text-right"
+            >
+              <p
+                class="text-xs text-gray-500"
+              >
+                Rate
+              </p>
+              <p
+                class="text-sm text-gray-400"
+              >
+                0.8800
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
