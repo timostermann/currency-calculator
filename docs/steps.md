@@ -38,7 +38,7 @@ First quick step-by-step list for task planning.
 - [ ] Add predefined value buttons
 - [ ] Add output
 - [ ] Add calculation (probably as server action)
-- [ ] Add locale formatting
+- [ ] Add locale formatting (without hydration errors)
 - [ ] Tests
 
 ## 6 Checks
