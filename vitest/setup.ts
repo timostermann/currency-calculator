@@ -1,4 +1,6 @@
 import "@testing-library/jest-dom";
+// eslint-disable-next-line no-restricted-imports
+import "../node_modules/vitest/globals.d";
 
 global.ResizeObserver = class ResizeObserverMock {
   disconnect() {}
@@ -13,3 +15,4 @@ Object.defineProperty(global.navigator, "language", {
 });
 
 import "./global-mocks";
+import "./standard-tests";

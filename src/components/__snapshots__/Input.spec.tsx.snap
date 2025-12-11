@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Input > renders expected markup 1`] = `
+<div>
+  <div>
+    <label
+      class="mb-2 block text-sm font-medium text-gray-300"
+      for="numeric-input"
+    >
+      Test
+    </label>
+    <div
+      class="relative min-h-14"
+    >
+      <div
+        class="relative"
+      >
+        <input
+          aria-invalid="false"
+          class="w-full rounded-lg border bg-gray-700 py-3 text-lg text-white placeholder-gray-500 focus:ring-2 focus:outline-none border-gray-600 focus:border-blue-500 focus:ring-blue-500 px-4"
+          id="numeric-input"
+          inputmode="decimal"
+          type="text"
+        />
+      </div>
+      <p
+        class="absolute top-full left-0 mt-1 text-sm text-red-400 transition-opacity pointer-events-none opacity-0"
+        id="numeric-input-error"
+      >
+         
+      </p>
+    </div>
+  </div>
+</div>
+`;

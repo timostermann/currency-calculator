@@ -114,6 +114,8 @@ const eslintConfig = [
       globals: {
         ...globals.browser,
         ...vitest.environments.env.globals,
+        itPassesStandardComponentTests: "readonly",
+        HTMLRules: "readonly",
       },
     },
     rules: {
