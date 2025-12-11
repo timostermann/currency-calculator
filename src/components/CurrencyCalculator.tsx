@@ -66,15 +66,13 @@ export function CurrencyCalculator({ rates, locale }: CurrencyCalculatorProps) {
 
         <div>
           <p className="mb-2 text-sm font-medium text-gray-300">Quick values</p>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {PRESET_VALUES.map((presetValue) => (
               <PresetButton
                 key={presetValue}
                 isActive={activePreset === presetValue}
                 onClick={() => handlePresetClick(presetValue)}
-                aria-label={`Set amount to ${presetValue} USD${
-                  activePreset === presetValue ? ", currently active" : ""
-                }`}
+                aria-label={`Set amount to ${presetValue} USD`}
               >
                 <span>{formatCurrency(presetValue, "USD", locale, 0)}</span>
               </PresetButton>
