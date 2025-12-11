@@ -3,16 +3,13 @@ import { getBrowserLocale } from "@/lib/locale";
 export function formatCurrency(
   value: number,
   currency: string,
-  locale?: string,
-  decimals?: number,
+  locale: string = getBrowserLocale(),
+  decimals: number = 2,
 ): string {
-  const effectiveLocale = locale || getBrowserLocale();
-  const effectiveDecimals = decimals ?? 2;
-
-  return new Intl.NumberFormat(effectiveLocale, {
+  return new Intl.NumberFormat(locale, {
     style: "currency",
     currency,
-    minimumFractionDigits: effectiveDecimals,
-    maximumFractionDigits: effectiveDecimals,
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
   }).format(value);
 }

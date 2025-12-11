@@ -14,6 +14,7 @@ import {
 import { parseTimeSeriesData } from "@/lib/api/utils/parseTimeSeriesData";
 import { getBrowserLocale } from "@/lib/locale";
 import { formatNumber } from "@/lib/currency";
+import { formatDate } from "@/lib/date";
 import type { TimeSeriesRatesResponse } from "@/lib/api/types";
 
 type ExchangeRateChartProps = {
@@ -26,8 +27,8 @@ export function ExchangeRateChart({ data }: ExchangeRateChartProps) {
   const chartData = useMemo(
     () =>
       parseTimeSeriesData(data).map((point) => ({
-        date: new Date(point.date).toLocaleDateString(locale, {
-          month: "short",
+        date: formatDate(point.date, locale, {
+          month: "numeric",
           day: "numeric",
         }),
         EUR: point.rates.EUR,

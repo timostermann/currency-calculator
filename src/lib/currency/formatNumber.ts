@@ -2,12 +2,10 @@ import { getBrowserLocale } from "@/lib/locale";
 
 export function formatNumber(
   value: number,
-  decimals = 4,
-  locale?: string,
+  decimals: number = 4,
+  locale: string = getBrowserLocale(),
 ): string {
-  const effectiveLocale = locale || getBrowserLocale();
-
-  return new Intl.NumberFormat(effectiveLocale, {
+  return new Intl.NumberFormat(locale, {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
   }).format(value);

@@ -3,6 +3,7 @@ import { ExchangeRateChart } from "@/components/ExchangeRateChart";
 import { CurrencyCalculator } from "@/components/CurrencyCalculator";
 import { getServerLocale } from "@/lib/locale/getServerLocale";
 import { formatNumber } from "@/lib/currency";
+import { formatDate } from "@/lib/date";
 
 export default async function Home() {
   const [ratesData, timeSeriesData, locale] = await Promise.all([
@@ -27,7 +28,7 @@ export default async function Home() {
               Current Exchange Rates
             </h2>
             <p className="mt-1 text-sm text-gray-400">
-              Last updated: {ratesData.date}
+              Last updated: {formatDate(ratesData.date, locale)}
             </p>
           </div>
 
@@ -74,8 +75,9 @@ export default async function Home() {
               14-Day Exchange Rate Trend
             </h2>
             <p className="mt-1 text-sm text-gray-400">
-              Historical rates from {timeSeriesData.start_date} to{" "}
-              {timeSeriesData.end_date}
+              Historical rates from{" "}
+              {formatDate(timeSeriesData.start_date, locale)} to{" "}
+              {formatDate(timeSeriesData.end_date, locale)}
             </p>
           </div>
 
