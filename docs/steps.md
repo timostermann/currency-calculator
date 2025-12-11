@@ -23,8 +23,10 @@ First quick step-by-step list for task planning.
 
 ## 3 Data Display
 
-- [ ] Add basic page setup
-- [ ] Show exchange rate + date
+- [x] Add basic page setup
+  - [x] remove next starter defaults
+  - [x] add basic layout using placeholder elements
+- [x] Show exchange rate + date
 
 ## 4 Chart
 
