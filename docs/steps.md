@@ -50,8 +50,8 @@ First quick step-by-step list for task planning.
 
 ## 7 Deployment
 
-- [ ] Setup simple cloud deployment (probably Vercel)
+- [x] Setup simple cloud deployment (probably Vercel)
 
 ## 8 Docs
 
-- [ ] README as required
+- [x] README as required
