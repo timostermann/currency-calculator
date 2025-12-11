@@ -18,8 +18,8 @@ First quick step-by-step list for task planning.
 
 ## 2 Connect API
 
-- [ ] Add lib for frankfurter api
-- [ ] Add typing & tests
+- [x] Add lib for frankfurter api
+- [x] Add typing & tests
 
 ## 3 Data Display
 

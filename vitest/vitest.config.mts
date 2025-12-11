@@ -41,6 +41,9 @@ export default defineConfig({
     setupFiles: ["vitest/setup.ts"],
   },
   resolve: {
-    alias: [{ find: "~", replacement: resolve(__dirname, "../src") }],
+    alias: [
+      { find: "@", replacement: resolve(__dirname, "../src") },
+      { find: "~", replacement: resolve(__dirname, "../q") },
+    ],
   },
 });
