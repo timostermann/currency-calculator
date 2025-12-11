@@ -83,9 +83,9 @@ export function CurrencyCalculator({ rates, locale }: CurrencyCalculatorProps) {
         </div>
 
         <div>
-          <p className="mb-3 text-sm font-medium text-gray-300">
+          <h3 className="mb-3 text-sm font-medium text-gray-300">
             Converted amounts
-          </p>
+          </h3>
           <div className="space-y-3">
             {rates.EUR !== undefined && (
               <div className="flex items-center justify-between rounded-lg border border-gray-700 bg-gray-700 p-4">

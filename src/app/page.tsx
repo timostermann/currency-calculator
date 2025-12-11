@@ -28,28 +28,36 @@ export default async function Home() {
           <div className="rounded-lg border border-gray-700 bg-gray-700 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-300">USD to EUR</p>
+                <h3 className="text-sm font-medium text-gray-300">
+                  USD to EUR
+                </h3>
                 <p className="mt-2 text-3xl font-bold text-white">
                   {ratesData.rates.EUR
                     ? formatNumber(ratesData.rates.EUR, 4, locale)
                     : "N/A"}
                 </p>
               </div>
-              <div className="text-4xl">🇪🇺</div>
+              <div className="text-4xl" aria-hidden="true">
+                🇪🇺
+              </div>
             </div>
           </div>
 
           <div className="rounded-lg border border-gray-700 bg-gray-700 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-300">USD to CHF</p>
+                <h3 className="text-sm font-medium text-gray-300">
+                  USD to CHF
+                </h3>
                 <p className="mt-2 text-3xl font-bold text-white">
                   {ratesData.rates.CHF
                     ? formatNumber(ratesData.rates.CHF, 4, locale)
                     : "N/A"}
                 </p>
               </div>
-              <div className="text-4xl">🇨🇭</div>
+              <div className="text-4xl" aria-hidden="true">
+                🇨🇭
+              </div>
             </div>
           </div>
         </div>
