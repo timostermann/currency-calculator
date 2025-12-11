@@ -1,5 +1,6 @@
 import { getLatestRates, getLast14DaysRates } from "@/lib/api";
 import { ExchangeRateChart } from "@/components/ExchangeRateChart";
+import { CurrencyCalculator } from "@/components/CurrencyCalculator";
 
 export default async function Home() {
   const [ratesData, timeSeriesData] = await Promise.all([
@@ -57,6 +58,8 @@ export default async function Home() {
             </div>
           </div>
         </div>
+
+        <CurrencyCalculator rates={ratesData.rates} />
 
         <div className="rounded-lg bg-gray-800 p-8 shadow-lg">
           <div className="mb-6 border-b pb-4">

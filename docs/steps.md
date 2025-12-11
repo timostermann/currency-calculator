@@ -34,11 +34,11 @@ First quick step-by-step list for task planning.
 
 ## 5 Form
 
-- [ ] Add numeric input
-- [ ] Add predefined value buttons
-- [ ] Add output
-- [ ] Add calculation (probably as server action)
-- [ ] Add locale formatting (without hydration errors)
+- [x] Add numeric input
+- [x] Add predefined value buttons
+- [x] Add output
+- [x] Add calculation (probably as server action)
+- [x] Add locale formatting (without hydration errors)
 - [ ] Tests
 
 ## 6 Checks

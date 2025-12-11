@@ -82,3 +82,5 @@ export function ExchangeRateChart({ data }: ExchangeRateChartProps) {
     </div>
   );
 }
+
+ExchangeRateChart.displayName = "ExchangeRateChart";

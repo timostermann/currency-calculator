@@ -87,6 +87,7 @@ const eslintConfig = [
       },
     },
     rules: {
+      "no-unused-vars": "off",
       "react/prop-types": "off",
       "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
       "@typescript-eslint/no-floating-promises": "error",
