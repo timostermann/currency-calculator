@@ -21,6 +21,31 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Build image locally for vulnerability scan
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          load: true
+          tags: local/${{ github.repository }}:scan
+
+      - name: Scan image for vulnerabilities (Trivy)
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: local/${{ github.repository }}:scan
+          format: table
+          exit-code: "1"
+          ignore-unfixed: true
+          vuln-type: os,library
+          severity: CRITICAL,HIGH
+          output: trivy-report.txt
+
+      - name: Upload Trivy report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trivy-report
+          path: trivy-report.txt
+
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -58,7 +83,65 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
+            echo "================================================"
+            echo "Deploying Currency Calculator to VPS..."
+            echo "================================================"
+
+            echo ""
+            echo "================================================"
+            echo "Pulling latest image..."
+            echo "================================================"
+
             cd ~/server-config/apps
             docker compose pull currency-calculator
+            echo "✓ Image pulled successfully"
+
+            echo ""
+            echo "================================================"
+            echo "Deploying container..."
+            echo "================================================"
+
             docker compose up -d currency-calculator
+            echo "✓ Container started"
+
+            echo ""
+            echo "================================================"
+            echo "Verifying deployment..."
+            echo "================================================"
+
+            # Wait for container to stabilize
+            sleep 3
+
+            # Check container status
+            if docker compose ps currency-calculator | grep -q "Up"; then
+              echo "✓ Currency Calculator is running"
+              docker compose ps currency-calculator
+            else
+              echo "✗ Currency Calculator failed to start"
             docker compose ps currency-calculator
+              docker compose logs --tail=50 currency-calculator
+              exit 1
+            fi
+
+            # Check health endpoint
+            echo ""
+            echo "Checking application health..."
+            for i in {1..10}; do
+              if docker compose exec -T currency-calculator wget -q -O- http://localhost:3000/api/health > /dev/null 2>&1; then
+                echo "✓ Health check passed"
+                break
+              fi
+              if [ $i -eq 10 ]; then
+                echo "✗ Health check failed after 10 attempts"
+                docker compose logs --tail=30 currency-calculator
+                exit 1
+              fi
+              echo "Waiting for health check... (attempt $i/10)"
+              sleep 2
+            done
+
+            echo ""
+            echo "================================================"
+            echo "Deployment completed successfully! 🚀"
+            echo "================================================"
+            echo "Currency Calculator is now live at https://currency-calculator.timostermann.io"
