@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
+import { TempsAnalyticsProvider } from "@temps-sdk/react-analytics";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,19 +30,28 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="flex min-h-screen justify-center bg-linear-to-br from-gray-950 to-gray-800 p-4 pt-16">
-          <main className="w-full max-w-4xl space-y-8">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold text-white">
-                Currency Calculator
-              </h1>
-              <p className="mt-2 text-lg text-gray-300">
-                USD to EUR & CHF Exchange Rates
-              </p>
-            </div>
-            {children}
-          </main>
-        </div>
+        <TempsAnalyticsProvider
+          basePath="/api/_temps"
+          autoTrackPageviews={true}
+          autoTrackSpeedAnalytics={true}
+          ignoreLocalhost={true}
+          enableSessionRecording={true}
+          sessionRecordingConfig={{ sessionSampleRate: 0.1 }}
+        >
+          <div className="flex min-h-screen justify-center bg-linear-to-br from-gray-950 to-gray-800 p-4 pt-16">
+            <main className="w-full max-w-4xl space-y-8">
+              <div className="text-center">
+                <h1 className="text-4xl font-bold text-white">
+                  Currency Calculator
+                </h1>
+                <p className="mt-2 text-lg text-gray-300">
+                  USD to EUR & CHF Exchange Rates
+                </p>
+              </div>
+              {children}
+            </main>
+          </div>
+        </TempsAnalyticsProvider>
       </body>
     </html>
   );
