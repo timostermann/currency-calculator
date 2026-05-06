@@ -35,7 +35,8 @@ export default function RootLayout({
           autoTrackPageviews={true}
           autoTrackSpeedAnalytics={true}
           ignoreLocalhost={true}
-          enableSessionRecording={false}
+          enableSessionRecording={true}
+          sessionRecordingConfig={{ sessionSampleRate: 0.1 }}
         >
           <div className="flex min-h-screen justify-center bg-linear-to-br from-gray-950 to-gray-800 p-4 pt-16">
             <main className="w-full max-w-4xl space-y-8">
