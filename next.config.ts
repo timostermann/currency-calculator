@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -14,7 +15,7 @@ const nextConfig: NextConfig = {
               // In production, consider using nonces instead of 'unsafe-inline'
               "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
               "style-src 'self' 'unsafe-inline'",
-              "connect-src 'self' https://api.frankfurter.app",
+              "connect-src 'self' https://api.frankfurter.app https://temps.timostermann.io",
               "img-src 'self' data: blob:",
               "font-src 'self'",
               "object-src 'none'",
@@ -50,4 +51,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  silent: true,
+  disableLogger: true,
+  sourcemaps: { disable: true },
+});
