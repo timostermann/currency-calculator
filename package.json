@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@sentry/nextjs": "^10.51.0",
-    "@temps-sdk/react-analytics": "^0.0.3",
     "classnames": "^2.5.1",
     "next": "16.0.8",
     "react": "19.2.1",

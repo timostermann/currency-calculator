@@ -1,26 +1,21 @@
-# Stage 1: Dependencies
-FROM node:24-alpine AS deps
-WORKDIR /app
-
-# Install dependencies
-COPY package*.json ./
-RUN npm ci --only=production --ignore-scripts
-
-# Stage 2: Builder
+# Stage 1: Builder
 FROM node:24-alpine AS builder
 WORKDIR /app
 
-# Install all dependencies (including dev)
+# Install dependencies (cached unless package files change)
 COPY package*.json ./
 RUN npm ci --ignore-scripts
 
-# Copy source files
+# Copy source and build
 COPY . .
 
-# Build Next.js application
+# Browser-visible env vars must be available at build time to be inlined
+ARG NEXT_PUBLIC_SENTRY_DSN
+ENV NEXT_PUBLIC_SENTRY_DSN=$NEXT_PUBLIC_SENTRY_DSN
+
 RUN npm run build
 
-# Stage 3: Runtime
+# Stage 2: Runtime
 FROM node:24-alpine AS runtime
 WORKDIR /app
 
@@ -32,7 +27,7 @@ ENV HOSTNAME=0.0.0.0
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-# Copy standalone server
+# Copy standalone server output
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
@@ -42,4 +37,3 @@ USER nextjs
 EXPOSE 3000
 
 CMD ["node", "server.js"]
-

@@ -1,8 +1,14 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  // Pin the workspace root to this project so builds are unaffected by
+  // stray lockfiles in parent directories (avoids nested standalone output).
+  turbopack: {
+    root: path.join(import.meta.dirname),
+  },
   async headers() {
     return [
       {
@@ -15,7 +21,7 @@ const nextConfig: NextConfig = {
               // In production, consider using nonces instead of 'unsafe-inline'
               "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
               "style-src 'self' 'unsafe-inline'",
-              "connect-src 'self' https://api.frankfurter.app https://temps.timostermann.io",
+              "connect-src 'self' https://api.frankfurter.app",
               "img-src 'self' data: blob:",
               "font-src 'self'",
               "object-src 'none'",
