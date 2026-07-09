@@ -27,6 +27,13 @@ ENV HOSTNAME=0.0.0.0
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
+# Remove the npm CLI bundled with the base image: it (and its vendored deps
+# like undici) is unused at runtime since we only run "node server.js", and
+# dropping it removes that package's CVEs from the shipped image entirely.
+RUN rm -rf /usr/local/lib/node_modules/npm \
+    /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack \
+    /usr/local/lib/node_modules/corepack
+
 # Copy standalone server output
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static

@@ -24,7 +24,7 @@
   "dependencies": {
     "@sentry/nextjs": "^10.51.0",
     "classnames": "^2.5.1",
-    "next": "16.0.8",
+    "next": "16.2.10",
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "recharts": "^3.5.1",
@@ -47,7 +47,7 @@
     "@vitest/eslint-plugin": "^1.5.2",
     "commit-and-tag-version": "^12.6.1",
     "eslint": "^9.39.1",
-    "eslint-config-next": "16.0.8",
+    "eslint-config-next": "16.2.10",
     "eslint-import-resolver-typescript": "^4.4.4",
     "globals": "^16.5.0",
     "html-validate": "^10.4.0",
